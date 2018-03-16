@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonInputToDatabase", "PokemonInputToDatabase\PokemonInputToDatabase.csproj", "{C8052A18-C990-40DA-AE99-8288AC275AF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonClassLibrary", "PokemonClassLibrary\PokemonClassLibrary.csproj", "{825C7165-1665-49A6-BB62-5DC4B5EFE51C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8052A18-C990-40DA-AE99-8288AC275AF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8052A18-C990-40DA-AE99-8288AC275AF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8052A18-C990-40DA-AE99-8288AC275AF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8052A18-C990-40DA-AE99-8288AC275AF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{825C7165-1665-49A6-BB62-5DC4B5EFE51C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{825C7165-1665-49A6-BB62-5DC4B5EFE51C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{825C7165-1665-49A6-BB62-5DC4B5EFE51C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{825C7165-1665-49A6-BB62-5DC4B5EFE51C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {489E5CC9-EBC6-4474-840C-3A5ED1A9F901}
+	EndGlobalSection
+EndGlobal

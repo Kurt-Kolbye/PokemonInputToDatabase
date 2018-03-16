@@ -1,0 +1,6 @@
+C:\Users\Kurt\Documents\Visual Studio 2017\Projects\C#.NET Projects\PokemonInputToDatabase\PokemonClassLibrary\bin\Debug\PokemonClassLibrary.dll
+C:\Users\Kurt\Documents\Visual Studio 2017\Projects\C#.NET Projects\PokemonInputToDatabase\PokemonClassLibrary\bin\Debug\PokemonClassLibrary.pdb
+C:\Users\Kurt\Documents\Visual Studio 2017\Projects\C#.NET Projects\PokemonInputToDatabase\PokemonClassLibrary\obj\Debug\PokemonClassLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Kurt\Documents\Visual Studio 2017\Projects\C#.NET Projects\PokemonInputToDatabase\PokemonClassLibrary\obj\Debug\PokemonClassLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Kurt\Documents\Visual Studio 2017\Projects\C#.NET Projects\PokemonInputToDatabase\PokemonClassLibrary\obj\Debug\PokemonClassLibrary.dll
+C:\Users\Kurt\Documents\Visual Studio 2017\Projects\C#.NET Projects\PokemonInputToDatabase\PokemonClassLibrary\obj\Debug\PokemonClassLibrary.pdb
