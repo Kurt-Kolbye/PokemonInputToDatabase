@@ -31,15 +31,12 @@ namespace PokemonInputToDatabase
 
                 Console.WriteLine("\nEnter the Pokemon's type: ");
                 type = (PokemonTypesEnum)int.Parse(Console.ReadLine());
-
-                Console.WriteLine("\nEnter the Pokemon's hp: ");
-                hp = int.Parse(Console.ReadLine());
-
-                Console.WriteLine("\nEnter the Pokemon's speed: ");
-                speed = int.Parse(Console.ReadLine());
-
-                Console.WriteLine("\nEnter the Pokemon's level: ");
-                level = int.Parse(Console.ReadLine());
+                
+                hp = GetNumberInput("\nEnter the Pokemon's hp: ");
+                
+                speed = GetNumberInput("\nEnter the Pokemon's speed: ");
+                                
+                level = GetNumberInput("\nEnter the Pokemon's level: ");
 
                 Console.WriteLine("\nCommitting the pokemon to the database...");
                 //add some commit to database code here
@@ -47,6 +44,28 @@ namespace PokemonInputToDatabase
                 exitMenu = ShouldExitMenu();
             }
             
+        }
+
+        //takes the message to be displayed and loops through to get a valid integer input
+        public static int GetNumberInput(string message)
+        {
+            string input = "";
+            bool validInput = false;
+
+            Console.WriteLine(message);
+
+            while (!validInput)
+            {
+                input = Console.ReadLine();
+                validInput = IsValidIntegerInput(input);
+
+                if (!validInput)
+                {
+                    Console.WriteLine("\nInvalid input. Enter a valid integer.");
+                }
+            }
+
+            return int.Parse(input);
         }
 
         public static bool ShouldExitMenu()
@@ -80,7 +99,7 @@ namespace PokemonInputToDatabase
                 }
                 else
                 {
-                    Console.WriteLine("Invalid input. Enter 1 for \"Yes\" and 0 for \"No\".");
+                    Console.WriteLine("\nInvalid input. Enter 1 for \"Yes\" and 0 for \"No\".");
                     ret = false;
                 }
             }
@@ -90,17 +109,16 @@ namespace PokemonInputToDatabase
         public static bool IsValidExitMenuInput(string input)
         {
             int validNumber = 0;
-            //attempt to parse the user's input to a number
-            try
-            {
-                validNumber = int.Parse(input);
-            }
-            catch
+
+            //check if input is a valid integer
+            if (!IsValidIntegerInput(input))
             {
                 return false;
             }
 
-            //see if the number is valid exit menu input
+            validNumber = int.Parse(input);
+
+            //check if the number is valid exit menu input
             if (validNumber == 0 || validNumber == 1)
             {
                 return true;
@@ -110,6 +128,22 @@ namespace PokemonInputToDatabase
                 return false;
             }
         }
+
+        public static bool IsValidIntegerInput(string input)
+        {
+            int validNumber = 0;
+            //attempt to parse the user's input to a number
+            try
+            {
+                validNumber = int.Parse(input);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
 
         public static void DataBaseTutorialStuff()
         {
