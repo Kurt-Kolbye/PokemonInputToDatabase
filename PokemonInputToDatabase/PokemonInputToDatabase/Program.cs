@@ -15,31 +15,100 @@ namespace PokemonInputToDatabase
     {
         static void Main(string[] args)
         {
-            string name, description = "";
-            int hp, speed, level = 0;
-            PokemonTypesEnum type = 0;
+            bool exitMenu = false;
 
-            Console.WriteLine("Enter the Pokemon's name: ");
-            name = Console.ReadLine();
+            while (!exitMenu)
+            {
+                string name, description = "";
+                int hp, speed, level = 0;
+                PokemonTypesEnum type = 0;
 
-            Console.WriteLine("Enter the Pokemon's description: ");
-            description = Console.ReadLine();
+                Console.WriteLine("Enter the Pokemon's name: ");
+                name = Console.ReadLine();
 
-            Console.WriteLine("Enter the Pokemon's type: ");
-            type = (PokemonTypesEnum) int.Parse(Console.ReadLine());
+                Console.WriteLine("\nEnter the Pokemon's description: ");
+                description = Console.ReadLine();
 
-            Console.WriteLine("Enter the Pokemon's hp: ");
-            hp = int.Parse(Console.ReadLine());
+                Console.WriteLine("\nEnter the Pokemon's type: ");
+                type = (PokemonTypesEnum)int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Enter the Pokemon's speed: ");
-            speed = int.Parse(Console.ReadLine());
+                Console.WriteLine("\nEnter the Pokemon's hp: ");
+                hp = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Enter the Pokemon's level: ");
-            level = int.Parse(Console.ReadLine());
+                Console.WriteLine("\nEnter the Pokemon's speed: ");
+                speed = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Committing the pokemon to the database...");
+                Console.WriteLine("\nEnter the Pokemon's level: ");
+                level = int.Parse(Console.ReadLine());
 
-            Console.ReadLine();
+                Console.WriteLine("\nCommitting the pokemon to the database...");
+                //add some commit to database code here
+
+                exitMenu = ShouldExitMenu();
+            }
+            
+        }
+
+        public static bool ShouldExitMenu()
+        {
+            bool validInput = false;
+            bool ret = false;
+
+            Console.WriteLine("\nWould you like to enter another pokemon? Enter 1 for \"Yes\" and 0 for \"No\".\n");
+
+            while (!validInput)
+            {
+                string input = "";
+                int number = 0;
+
+                input = Console.ReadLine();
+
+                validInput = IsValidExitMenuInput(input);
+
+                if (validInput)
+                {
+                    number = int.Parse(input);
+
+                    if (number == 0)
+                    {
+                        ret = true;
+                    }
+                    else
+                    {
+                        ret = false;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Enter 1 for \"Yes\" and 0 for \"No\".");
+                    ret = false;
+                }
+            }
+            return ret;
+        }
+
+        public static bool IsValidExitMenuInput(string input)
+        {
+            int validNumber = 0;
+            //attempt to parse the user's input to a number
+            try
+            {
+                validNumber = int.Parse(input);
+            }
+            catch
+            {
+                return false;
+            }
+
+            //see if the number is valid exit menu input
+            if (validNumber == 0 || validNumber == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public static void DataBaseTutorialStuff()
