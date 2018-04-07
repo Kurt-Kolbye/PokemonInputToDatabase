@@ -52,7 +52,8 @@ namespace PokemonInputToDatabase
                 Console.WriteLine("\n---------------------");
 
                 Console.WriteLine("\nCommitting the pokemon to the database...");
-                //add some commit to database code here
+
+                CommitPokemonToDatabase(pokemon);
 
                 Console.ReadLine();
 
@@ -205,6 +206,51 @@ namespace PokemonInputToDatabase
             }
         }
 
+        public static void CommitPokemonToDatabase(Pokemon pokemon)
+        {
+            try
+            {
+                //create variable to hold the connection string
+                string connectionString = ConfigurationManager.ConnectionStrings["PokemonDatabase"].ConnectionString;
+
+                //create a SQL connection with the connection string
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    //use a SqlCommand to perform the query
+                    using (SqlCommand command = new SqlCommand())
+                    {
+                        //specify the connection string to the SqlCommand
+                        command.Connection = connection;
+
+                        //specify that the command type is of text
+                        command.CommandType = CommandType.Text;
+
+                        //set the command's text to the SQL query
+                        command.CommandText =
+                            "INSERT INTO Pokemon (Name, Description, Level, Hitpoints, Speed, PokemonType) " +
+                            "VALUES (@name, @description, @level, @hitpoints, @speed, @pokemontype)";
+
+                        //add the parameters and pass the values for the command's query
+                        command.Parameters.AddWithValue("@name", pokemon.Name);
+                        command.Parameters.AddWithValue("@description", pokemon.Description);
+                        command.Parameters.AddWithValue("@level", pokemon.Level);
+                        command.Parameters.AddWithValue("@hitpoints", pokemon.HitPoints);
+                        command.Parameters.AddWithValue("@speed", pokemon.Speed);
+                        command.Parameters.AddWithValue("@pokemontype", pokemon.PokemonType);
+                        
+                        //execute the command's query
+                        command.Connection.Open();
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("\n****ERROR****");
+                Console.WriteLine("\nSomething went wrong:\n\n" + e.Message);
+                Console.ReadLine();
+            }
+        }
 
         public static void DataBaseTutorialStuff()
         {
