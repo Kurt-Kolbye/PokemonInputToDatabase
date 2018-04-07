@@ -15,31 +15,35 @@ namespace PokemonInputToDatabase
     {
         static void Main(string[] args)
         {
+            string name, description = "";
+
+            int hp, speed, level = 0;
+
             bool exitMenu = false;
 
+            PokemonTypesEnum type = 0;
+
+            //loop through the pokemon input until user wants to exit
             while (!exitMenu)
             {
-                string name, description = "";
-                int hp, speed, level = 0;
-                PokemonTypesEnum type = 0;
-
                 Console.WriteLine("Enter the Pokemon's name: ");
                 name = Console.ReadLine();
 
                 Console.WriteLine("\nEnter the Pokemon's description: ");
                 description = Console.ReadLine();
 
-                Console.WriteLine("\nEnter the Pokemon's type: ");
-                type = (PokemonTypesEnum)int.Parse(Console.ReadLine());
+                type = (PokemonTypesEnum) GetPokemonTypeInput();
                 
                 hp = GetNumberInput("\nEnter the Pokemon's hp: ");
-                
+
                 speed = GetNumberInput("\nEnter the Pokemon's speed: ");
-                                
+
                 level = GetNumberInput("\nEnter the Pokemon's level: ");
 
                 Console.WriteLine("\nCommitting the pokemon to the database...");
                 //add some commit to database code here
+
+                Console.Clear();
 
                 exitMenu = ShouldExitMenu();
             }
@@ -66,6 +70,50 @@ namespace PokemonInputToDatabase
             }
 
             return int.Parse(input);
+        }
+
+        public static int GetPokemonTypeInput()
+        {
+            int validNumber = 0;
+            bool validInput = false;
+
+            Console.WriteLine(
+                    "\n(1) = Normal" +
+                    "\n(2) = Fire" +
+                    "\n(3) = Grass" +
+                    "\n(4) = Water" +
+                    "\n(5) = Electric" +
+                    "\n(6) = Psychic" +
+                    "\n(7) = Ice" +
+                    "\n(8) = Dragon" +
+                    "\n(9) = Dark" +
+                    "\n(10) = Fairy" +
+                    "\n(11) = Flying" +
+                    "\n(12) = Fighting" +
+                    "\n(13) = Poison" +
+                    "\n(14) = Ground" +
+                    "\n(15) = Rock" +
+                    "\n(16) = Bug" +
+                    "\n(17) = Ghost" +
+                    "\n(18) = Steel");
+
+            while (!validInput)
+            {
+                validNumber = GetNumberInput("\nEnter the Pokemon's type: ");
+
+                //check if the number is valid pokemon type menu input
+                if (validNumber > 0 && validNumber < 19)
+                {
+                    validInput = true;
+                }
+                else
+                {
+                    Console.WriteLine("\nInvalid input. Enter a number from 1 to 18");
+                    validInput = false;
+                }
+            }
+
+            return validNumber;
         }
 
         public static bool ShouldExitMenu()
