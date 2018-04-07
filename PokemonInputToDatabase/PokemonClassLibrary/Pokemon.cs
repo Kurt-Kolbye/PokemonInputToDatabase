@@ -31,5 +31,15 @@ namespace PokemonClassLibrary
             ability.Use();
         }
 
+        public override string ToString()
+        {
+            return (
+                "\nName: " + Name
+                + "\nDescription: " + Description
+                + "\nPokemon Type: " + PokemonType.ToString()
+                + "\nHit Points: " + HitPoints.ToString()
+                + "\nSpeed: " + Speed.ToString()
+                + "\nLevel: " + Level.ToString());
+        }
     }
 }
