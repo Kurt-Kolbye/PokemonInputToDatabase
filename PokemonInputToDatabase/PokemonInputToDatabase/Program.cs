@@ -23,6 +23,8 @@ namespace PokemonInputToDatabase
 
             PokemonTypesEnum type = 0;
 
+            Pokemon pokemon;
+
             //loop through the pokemon input until user wants to exit
             while (!exitMenu)
             {
@@ -40,8 +42,19 @@ namespace PokemonInputToDatabase
 
                 level = GetNumberInput("\nEnter the Pokemon's level: ");
 
+                pokemon = new Pokemon(name, description, hp, speed, level, type);
+
+                Console.WriteLine("\nPOKEMON DATA: "
+                    + "\n---------------------");
+
+                Console.WriteLine(pokemon.ToString());
+
+                Console.WriteLine("\n---------------------");
+
                 Console.WriteLine("\nCommitting the pokemon to the database...");
                 //add some commit to database code here
+
+                Console.ReadLine();
 
                 Console.Clear();
 
